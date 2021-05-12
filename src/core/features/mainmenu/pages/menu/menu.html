@@ -1,0 +1,49 @@
+<ion-tabs #mainTabs [hidden]="!showTabs" [class]="'placement-' + tabsPlacement" [class.tabshidden]="hidden"
+    (ionTabsDidChange)="tabChanged($event)">
+    <ion-tab-bar slot="bottom" [hidden]="hidden">
+        <ion-spinner *ngIf="!loaded"></ion-spinner>
+
+        <ion-tab-button
+            *ngFor="let tab of tabs"
+            (click)="tabClicked($event, tab.page)"
+            (keydown)="tabAction.keyDown($event)"
+            (keyup)="tabAction.keyUp(tab.page, $event)"
+            [hidden]="!loaded && tab.hide"
+            [tab]="tab.page"
+            [disabled]="tab.hide"
+            layout="label-hide"
+            class="{{tab.class}}"
+            [selected]="tab.page === selectedTab"
+            [tabindex]="selectedTab == tab.page ? 0 : -1"
+            [attr.aria-controls]="tab.id"
+            [attr.aria-label]="tab.title | translate"
+        >
+            <ion-icon [name]="tab.icon" aria-hidden="true"></ion-icon>
+            <ion-label aria-hidden="true">{{ tab.title | translate }}</ion-label>
+            <ion-badge *ngIf="tab.badge">{{ tab.badge }}</ion-badge>
+        </ion-tab-button>
+
+        <ion-tab-button
+            (click)="tabClicked($event, morePageName)"
+            (keydown)="tabAction.keyDown($event)"
+            (keyup)="tabAction.keyUp(morePageName, $event)"
+            [hidden]="!loaded"
+            [tab]="morePageName"
+            layout="label-hide"
+            [tabindex]="selectedTab == morePageName ? 0 : -1"
+            [attr.aria-controls]="morePageName"
+            [attr.aria-label]="'core.more' | translate"
+        >
+            <ion-icon name="fas-bars" aria-hidden="true"></ion-icon>
+            <ion-label aria-hidden="true">{{ 'core.more' | translate }}</ion-label>
+        </ion-tab-button>
+    </ion-tab-bar>
+</ion-tabs>
+<div class="core-network-message" [hidden]="!showTabs">
+    <div class="core-online-message">
+        {{ "core.youreonline" | translate }}
+    </div>
+    <div class="core-offline-message">
+        {{ "core.youreoffline" | translate }}
+    </div>
+</div>

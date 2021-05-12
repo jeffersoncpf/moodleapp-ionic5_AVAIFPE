@@ -1,0 +1,245 @@
+/*
+ * App LIGHT theme CSS
+ * ----------------------------------------------------------------------------
+ * Ionic Variables and Theming. For more info, please see:
+ * http://ionicframework.com/docs/theming/
+ */
+
+:root {
+
+    // Color palette
+    --black:           #{$black}; // Headings, standard text.
+    --gray-darker:     #{$gray-darker};
+    --gray-dark:       #{$gray-dark};
+    --gray:            #{$gray};
+    --gray-light:      #{$gray-light};
+    --gray-lighter:    #{$gray-lighter};
+    --white:           #{$white};
+
+    --blue:            #{$blue};
+    --blue-light:      #{$blue-light};
+    --blue-dark:       #{$blue-dark};
+
+    --turquoise:       #{$turquoise};
+    --turquoise-light: #{$turquoise-light};
+    --turquoise-dark:  #{$turquoise-dark};
+
+    --green:           #{$green};
+    --green-light:     #{$green-light};
+    --green-dark:      #{$green-dark};
+
+    --red:             #{$red};
+    --red-light:       #{$red-light};
+    --red-dark:        #{$red-dark};
+
+    --orange:          #{$orange};
+    --orange-light:    #{$orange-light};
+
+    --yellow:          #{$yellow};
+    --yellow-light:    #{$yellow-light};
+    --yellow-dark:     #{$yellow-dark};
+    --purple:          #{$purple};
+
+    --brand-color:      #{$brand-color};
+    --brand-color-light: #{$brand-color-light};
+    --brand-color-dark:  #{$brand-color-dark};
+
+    --core-online-color: #{$core-online-color};
+
+    // Named Color Variables
+    --primary: #{$primary};
+    --secondary: #{$secondary};
+    --tertiary: #{$tertiary};
+    --success: #{$success};
+    --danger: #{$danger};
+    --warning: #{$warning};
+    --info: #{$info};
+    --light: #{$light};
+    --dark: #{$dark};
+    --medium: #{$medium};
+
+    @each $color-name, $value in $colors {
+        @include generate-color($color-name);
+    }
+
+    // Accessibility vars.
+    --a11y-min-target-size: 44px;
+
+    --module-icon-size: 24px;
+
+    --ion-text-color: #{$text-color};
+    --ion-text-color-rgb: 58,58,58;
+    --ion-card-color: var(--ion-text-color);
+
+    --text-hightlight-background-color: #{$core-text-hightlight-background-color};
+
+    ion-content {
+        --background: #{$background-color};
+        --background-lighter: var(--gray-lighter);
+        --contrast-background: var(--white);
+    }
+
+    --core-bottom-tabs-background: #{$bottom-tabs-background};
+    --core-bottom-tabs-color: #{$bottom-tabs-color};
+    --core-bottom-tabs-color-selected: #{$bottom-tabs-color-selected};
+    ion-tab-bar {
+        --background: var(--core-bottom-tabs-background);
+        --color: var(--core-bottom-tabs-color);
+        --color-selected: var(--core-bottom-tabs-color-selected);
+    }
+
+    --core-link-color: #{$link-color};
+    a {
+        color: var(--core-link-color);
+    }
+
+    --core-header-toolbar-button-image-size: #{$toolbar-button-image-size};
+    --core-header-toolbar-background: #{$toolbar-background};
+    --core-header-toolbar-color: #{$toolbar-color};
+    ion-toolbar {
+        --color: var(--core-header-toolbar-color);
+        --background: var(--core-header-toolbar-background);
+        ion-button {
+            --ion-toolbar-color: transparent;
+            --color: var(--core-header-toolbar-color);
+        }
+
+        ion-spinner {
+            --color: var(--core-header-toolbar-color);
+        }
+    }
+
+    ion-action-sheet {
+        --button-color-selected: #{$action-sheet-selected};
+        --title-border-color: var(--gray);
+
+        .action-sheet-title {
+            --color: #{$action-sheet-title-color};
+        }
+
+        @media (min-height: 500px) {
+            --max-height: 50%;
+            --height: 100%;
+        }
+
+        .action-sheet-cancel {
+            --button-color: var(--ion-color-danger);
+        }
+    }
+
+    --core-tabs-background: #{$core-tabs-background};
+    --core-tab-background: #{$core-tab-background};
+    --core-tab-color: #{$core-tab-color};
+    --core-tab-border-color: #{$core-tab-border-color};
+    --core-tab-color-active: #{$core-tab-color-active};
+    --core-tab-border-color-active: #{$core-tab-border-color-active};
+
+    core-tabs, core-tabs-outlet {
+        --background: var(--core-tabs-background);
+        ion-slide {
+            --background: var(--core-tab-background);
+            --color: var(--core-tab-color);
+            --border-color: var(--core-tab-border-color);
+            --color-active: var(--core-tab-color-active);
+            --border-color-active: var(--core-tab-border-color-active);
+        }
+    }
+
+    ion-spinner {
+        --color: var(--ion-color-primary);
+    }
+
+    core-progress-bar {
+        --height: #{$core-progressbar-height};
+        --color: #{$core-progressbar-color};
+        --text-color: #{$core-progressbar-text-color};
+        --background: #{$core-progressbar-background};
+    }
+
+    core-block-course-blocks {
+        --side-blocks-max-width: #{$core-side-blocks-max-width};
+        --side-blocks-min-width: #{$core-side-blocks-min-width};
+    }
+
+    --ion-item-background: #{$ion-item-background};
+    --ion-item-detail-icon-color: var(--gray-darker);
+    --ion-item-detail-icon-font-size: 20px;
+    --ion-item-detail-icon-opacity: 1;
+    ion-item {
+        --detail-icon-color: var(--ion-item-detail-icon-color);
+        --detail-icon-font-size: var(--ion-item-detail-icon-font-size);
+        --detail-icon-opacity: var(--ion-item-detail-icon-opacity);
+    }
+
+    --item-divider-min-height: calc(var(--a11y-min-target-size) + 8px);
+    ion-item-divider {
+        --background: var(--gray-lighter);
+        --color: inherit;
+        min-height: var(--item-divider-min-height);
+    }
+
+    --core-combobox-background: var(--ion-item-background);
+    --core-combobox-color: #{$core-combobox-color};
+
+    --selected-item-color: #{$core-selected-item-color};
+    --selected-item-border-width: #{$core-selected-item-border-width};
+
+    --core-login-background: #{$core-login-background};
+    --core-login-text-color: #{$core-login-text-color};
+
+    --core-star-color: #{$core-star-color};
+
+    --core-large-avatar-size:  #{$core-large-avatar-size};
+    --core-avatar-size:  #{$core-avatar-size};
+
+    --core-send-message-input-background: #{$core-send-message-input-background};
+    --core-send-message-input-color: #{$core-send-message-input-color};
+
+    --addon-calendar-event-category-color: #{$addon-calendar-event-category-color};
+    --addon-calendar-event-course-color: #{$addon-calendar-event-course-color};
+    --addon-calendar-event-group-color: #{$addon-calendar-event-group-color};
+    --addon-calendar-event-user-color: #{$addon-calendar-event-user-color};
+    --addon-calendar-event-site-color: #{$addon-calendar-event-site-color};
+    --addon-calendar-today-bgcolor: #{$addon-calendar-today-bgcolor};
+    --addon-calendar-today-color: #{$addon-calendar-today-color};
+    --addon-calendar-border-color: #{$addon-calendar-border-color};
+
+    --addon-messages-message-bg: #{$addon-messages-message-bg};
+    --addon-messages-message-activated-bg: #{$addon-messages-message-activated-bg};
+    --addon-messages-message-note-text: #{$addon-messages-message-note-text};
+    --addon-messages-message-note-font-size: #{$addon-messages-message-note-font-size};
+    --addon-messages-message-mine-bg: #{$addon-messages-message-mine-bg};
+    --addon-messages-message-mine-activated-bg: #{$addon-messages-message-mine-activated-bg};
+    --addon-messages-avatar-size: #{$addon-messages-avatar-size};
+    --addon-messages-discussion-badge: #{$addon-messages-discussion-badge};
+    --addon-messages-discussion-badge-text: #{$addon-messages-discussion-badge-text};
+
+    --addon-forum-avatar-size: #{$addon-forum-avatar-size};
+    --addon-forum-border-color: #{$addon-forum-border-color};
+    --addon-forum-highlight-color: #{$addon-forum-highlight-color};
+
+    --drop-shadow: 0, 0, 0, 0.18;
+
+    --core-menu-box-shadow-end: -4px 0px 16px rgba(var(--drop-shadow));
+    --core-menu-box-shadow-start: 4px 0px 16px rgba(var(--drop-shadow));
+
+    --core-question-correct-color: var(--green-dark);
+    --core-question-correct-color-bg: var(--green-light);
+    --core-question-incorrect-color: var(--red);
+    --core-question-incorrect-color-bg: var(--red-light);
+    --core-question-feedback-color: var(--yellow-dark);
+    --core-question-feedback-color-bg: var(--yellow-light);
+    --core-question-warning-color: var(--red);
+    --core-question-saved-color-bg: var(--gray-light);
+
+    --core-question-state-correct-color: var(--green-light);
+    --core-question-state-partial-color: var(--yellow-light);
+    --core-question-state-partial-text: var(--yellow);
+    --core-question-state-incorrect-color: var(--red-light);
+
+    --core-question-feedback-color: var(--yellow-dark);
+    --core-question-feedback-background-color: var(--yellow-light);
+
+    --core-dd-question-selected-shadow: 2px 2px 4px var(--gray-dark);
+
+}

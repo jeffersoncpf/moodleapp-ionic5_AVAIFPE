@@ -1,0 +1,35 @@
+:host {
+    display: flex;
+    width: 100%;
+
+    .core-progress-text {
+        line-height: 40px;
+        font-size: 1rem;
+        color: var(--text-color);
+        width: 55px;
+        text-align: center;
+    }
+
+    progress {
+        -webkit-appearance: none;
+        appearance: none;
+        height: var(--height);
+        margin: 16px 0;
+        padding: 0;
+        display: block;
+        width: 100%;
+        flex: 1;
+
+        &[value]::-webkit-progress-bar {
+            background-color: var(--background);
+            border-radius: 0;
+            border: 0;
+            box-shadow: none;
+        }
+
+        &[value]::-webkit-progress-value {
+            background-color: var(--color);
+            border-radius: 0;
+        }
+    }
+}

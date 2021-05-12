@@ -1,0 +1,44 @@
+<ion-tab-bar slot="top" class="core-tabs-bar" [hidden]="!tabs || numTabsShown <= 1" #tabBar>
+    <ion-spinner *ngIf="!hideUntil"></ion-spinner>
+    <ion-row *ngIf="hideUntil">
+        <ion-col class="col-with-arrow ion-no-padding" (click)="slidePrev()" size="1">
+            <ion-icon *ngIf="showPrevButton" name="fas-chevron-left" [attr.aria-label]="'core.previous' | translate"></ion-icon>
+        </ion-col>
+        <ion-col class="ion-no-padding" size="10">
+            <ion-slides (ionSlideDidChange)="slideChanged()" [options]="slidesOpts" [dir]="direction" role="tablist"
+                [attr.aria-label]="description">
+                <ng-container *ngFor="let tab of tabs">
+                    <ion-slide
+                        *ngIf="tab.enabled"
+                        role="presentation"
+                        [hidden]="!hideUntil"
+                        class="tab-slide"
+                        [id]="tab.id! + '-tab'"
+                        [class.selected]="selected == tab.id">
+                        <ion-tab-button
+                            (click)="selectTab(tab.id, $event)"
+                            (keydown)="tabAction.keyDown($event)"
+                            (keyup)="tabAction.keyUp(tab.id, $event)"
+                            class="{{tab.class}}"
+                            [layout]="layout"
+                            role="tab"
+                            [attr.aria-controls]="tab.id"
+                            [attr.aria-selected]="selected == tab.id"
+                            [tabindex]="selected == tab.id ? 0 : -1"
+                        >
+                            <ion-icon *ngIf="tab.icon" [name]="tab.icon" aria-hidden="true"></ion-icon>
+                            <ion-label>{{ tab.title | translate}}</ion-label>
+                            <ion-badge *ngIf="tab.badge">{{ tab.badge }}</ion-badge>
+                        </ion-tab-button>
+                    </ion-slide>
+                </ng-container>
+            </ion-slides>
+        </ion-col>
+        <ion-col class="col-with-arrow ion-no-padding" (click)="slideNext()" size="1">
+            <ion-icon *ngIf="showNextButton" name="fas-chevron-right" [attr.aria-label]="'core.next' | translate"></ion-icon>
+        </ion-col>
+    </ion-row>
+</ion-tab-bar>
+<div class="core-tabs-content-container" #originalTabs>
+    <ng-content></ng-content>
+</div>
